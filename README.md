@@ -1,24 +1,3 @@
-# README
+# ReactRailsExpenses
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A primer in ReactJS following [this tutorial](https://www.airpair.com/reactjs/posts/reactjs-a-guide-for-rails-developers), done using rails as a backend, hoping I will have some time later on to upgrade this to handle separate users and use more up to date libraries and better practices.
