@@ -10,9 +10,8 @@ class RecordForm extends React.Component {
   }
 
   handleChange(e) {
-    let state = {}
-    state[e.target.name] = e.target.value;
-    this.setState(state);
+    this.state[e.target.name] = e.target.value;
+    this.setState(this.state);
   }
 
   handleSubmit(e) {
@@ -24,12 +23,12 @@ class RecordForm extends React.Component {
   }
 
   valid() {
-    this.state.title && this.state.date && this.state.amount;
+    return this.state.title && this.state.date && this.state.amount;
   }
 
   render() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit.bind(this)}>
         <div className='form-group'>
           <input
             type='text'
@@ -37,7 +36,7 @@ class RecordForm extends React.Component {
             placeholder='Date'
             name='date'
             value={this.state.date}
-            onChange={this.handleChange} />
+            onChange={this.handleChange.bind(this)} />
         </div>
         <div className='form-group'>
           <input
@@ -46,7 +45,7 @@ class RecordForm extends React.Component {
             placeholder='Title'
             name='title'
             value={this.state.title}
-            onChange={this.handleChange} />
+            onChange={this.handleChange.bind(this)} />
         </div>
         <div className='form-group'>
           <input
@@ -55,7 +54,7 @@ class RecordForm extends React.Component {
             placeholder='Amount'
             name='amount'
             value={this.state.amount}
-            onChange={this.handleChange} />
+            onChange={this.handleChange.bind(this)} />
         </div>
         <button type='submit' className='btn btn-primary' disabled={!this.valid()}>
           Create record

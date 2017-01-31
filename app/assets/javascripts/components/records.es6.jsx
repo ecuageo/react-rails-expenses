@@ -12,24 +12,24 @@ class Records extends React.Component {
   }
 
   deleteRecord(record) {
-    index = this.state.records.indexOf(record);
-    records = React.addons.update(this.state.records, { $splice: [[index, 1]] });
-    this.replaceState({ records });
+    let index = this.state.records.indexOf(record);
+    let records = React.addons.update(this.state.records, { $splice: [[index, 1]] });
+    this.setState({ records });
   }
 
   updateRecord(record, data) {
-    index = this.state.records.indexOf(record);
-    records = React.addons.update(this.state.records, { $splice: [[index, 1, data]] });
-    this.replaceState({ records });
+    let index = this.state.records.indexOf(record);
+    let records = React.addons.update(this.state.records, { $splice: [[index, 1, data]] });
+    this.setState({ records });
   }
 
   credits() {
-    credits = this.state.records.filter((val) => val.amount >= 0)
+    let credits = this.state.records.filter((val) => val.amount >= 0);
     return credits.reduce((prev, curr) => prev + parseFloat(curr.amount), 0)
   }
 
   debits() {
-    debits = this.state.records.filter((val) => val.amount < 0)
+    let debits = this.state.records.filter((val) => val.amount < 0)
     return debits.reduce((prev, curr) => prev + parseFloat(curr.amount), 0)
   }
 
@@ -45,7 +45,7 @@ class Records extends React.Component {
           <AmountBox type='danger' amount={this.debits()} text='Debit' />
           <AmountBox type='info' amount={this.balance()} text='Balance' />
         </div>
-        <RecordForm handleNewRecord={this.addRecord} />
+        <RecordForm handleNewRecord={this.addRecord.bind(this)} />
         <table className='table table-bordered'>
           <thead>
             <tr>
@@ -60,8 +60,8 @@ class Records extends React.Component {
               <Record
                 key={record.id}
                 record={record}
-                handleDeleteRecord={this.deleteRecord}
-                handleEditRecord={this.updateRecord} />
+                handleDeleteRecord={this.deleteRecord.bind(this)}
+                handleEditRecord={this.updateRecord.bind(this)} />
             )}
           </tbody>
         </table>

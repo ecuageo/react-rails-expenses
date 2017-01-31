@@ -26,14 +26,14 @@ class Record extends React.Component {
 
   handleEdit(e) {
     e.preventDefault();
-    data = {
+    let data = {
       title: ReactDOM.findDOMNode(this.refs.title).value,
       date: ReactDOM.findDOMNode(this.refs.date).value,
       amount: ReactDOM.findDOMNode(this.refs.amount).value
     };
     $.ajax({
       method: 'PUT',
-      url: "/records/#{ this.props.record.id }",
+      url: `/records/${ this.props.record.id }`,
       dataType: 'JSON',
       data: { record: data },
       success: (data) => {
@@ -50,12 +50,13 @@ class Record extends React.Component {
         <td>{this.props.record.title}</td>
         <td>{amountFormat(this.props.record.amount)}</td>
         <td>
-          <a className='btn btn-default' onClick={this.handleToggle}>Edit</a>
-          <a className='btn btn-danger' onClick={this.handleDelete}>Delete</a>
+          <a className='btn btn-default' onClick={this.handleToggle.bind(this)}>Edit</a>
+          <a className='btn btn-danger' onClick={this.handleDelete.bind(this)}>Delete</a>
         </td>
       </tr>
     )
   }
+
   recordForm() {
     return (
       <tr>
@@ -75,8 +76,8 @@ class Record extends React.Component {
             defaultValue={this.props.record.amount} ref='amount' />
         </td>
         <td>
-          <a className='btn btn-default' onClick={this.handleEdit}>Update</a>
-          <a className='btn btn-danger' onClick={this.handleToggle}>Cancel</a>
+          <a className='btn btn-default' onClick={this.handleEdit.bind(this)}>Update</a>
+          <a className='btn btn-danger' onClick={this.handleToggle.bind(this)}>Cancel</a>
         </td>
       </tr>
     )
