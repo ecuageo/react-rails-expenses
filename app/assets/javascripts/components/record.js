@@ -1,4 +1,6 @@
-class Record extends React.Component {
+import { amountFormat } from '../utils';
+
+export default class Record extends React.Component {
 
   constructor(props, context) {
     super(props, context);

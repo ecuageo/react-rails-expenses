@@ -1,4 +1,4 @@
-class RecordForm extends React.Component {
+export default class RecordForm extends React.Component {
 
   constructor(props, context) {
     super(props, context);

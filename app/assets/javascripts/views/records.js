@@ -1,4 +1,10 @@
-class Records extends React.Component {
+'expose window.Records'
+
+import AmountBox from '../components/amount_box';
+import RecordForm from '../components/record_form';
+import Record from '../components/record';
+
+export default class Records extends React.Component {
 
   constructor(props, context) {
     super(props, context);
