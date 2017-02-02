@@ -37,7 +37,7 @@ gem 'validates_timeliness'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'react-rails', '~> 1.10.0'
 gem 'sprockets-commoner'
 

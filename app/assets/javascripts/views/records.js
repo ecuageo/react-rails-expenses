@@ -1,5 +1,6 @@
 'expose window.Records'
 import CCO from 'change-case-object';
+import { clone, findIndex, remove } from 'lodash';
 
 import AmountBox from '../components/amount_box';
 import RecordForm from '../components/record_form';
@@ -14,19 +15,20 @@ export default class Records extends React.Component {
   }
 
   addRecord(record) {
-    let records = React.addons.update(this.state.records, { $push: [record] });
+    let records = this.state.records.concat(record);
     this.setState({ records });
   }
 
   deleteRecord(record) {
-    let index = this.state.records.indexOf(record);
-    let records = React.addons.update(this.state.records, { $splice: [[index, 1]] });
+    let records = clone(this.state.records);
+    remove(records, el => el.id === record.id);
     this.setState({ records });
   }
 
   updateRecord(record, data) {
-    let index = this.state.records.indexOf(record);
-    let records = React.addons.update(this.state.records, { $splice: [[index, 1, data]] });
+    let records = clone(this.state.records);
+    let index = findIndex(this.state.records, el => el.id === record.id);
+    records.splice(index, 1, data);
     this.setState({ records });
   }
 
@@ -46,8 +48,10 @@ export default class Records extends React.Component {
 
   render() {
     return (
-      <div className='records'>
-        <h2 className='title'>Records</h2>
+      <div className="container mt-5">
+        <div className="container-fluid">
+          <h3>Time records</h3>
+        </div>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
         <table className='table table-bordered'>
           <thead>

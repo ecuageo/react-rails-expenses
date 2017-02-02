@@ -1,4 +1,4 @@
-import { amountFormat } from '../utils';
+import CCO from 'change-case-object';
 
 export default class Record extends React.Component {
 
@@ -28,10 +28,10 @@ export default class Record extends React.Component {
 
   handleEdit(e) {
     e.preventDefault();
-    let data = {
+    let data = CCO.snake({
       startTime: ReactDOM.findDOMNode(this.refs.startTime).value,
       endTime: ReactDOM.findDOMNode(this.refs.endTime).value,
-    };
+    });
     $.ajax({
       method: 'PUT',
       url: `/records/${ this.props.record.id }`,
