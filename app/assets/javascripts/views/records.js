@@ -52,6 +52,13 @@ export default class Records extends React.Component {
         <div className="container-fluid">
           <h3>Time records</h3>
         </div>
+        <div className="container-fluid mt-1 mb-1">
+          <div className="row" style={{ height: 150 }}>
+            <div className="col p-0"><AmountBox type="danger" title="Total hours" text="100" /></div>
+            <div className="col pl-1 pr-1"><AmountBox type="warning" title="Total days" text="55" /></div>
+            <div className="col p-0"><AmountBox type="success" title="Total days" text="55" /></div>
+          </div>
+        </div>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
         <table className='table table-bordered'>
           <thead>

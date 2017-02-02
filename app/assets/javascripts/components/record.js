@@ -50,8 +50,8 @@ export default class Record extends React.Component {
         <td>{this.props.record.startTime}</td>
         <td>{this.props.record.endTime}</td>
         <td>
-          <a className='btn btn-default' onClick={this.handleToggle.bind(this)}>Edit</a>
-          <a className='btn btn-danger' onClick={this.handleDelete.bind(this)}>Delete</a>
+          <button className='btn btn-outline-primary' onClick={this.handleToggle.bind(this)}>Edit</button>
+          <button className='btn btn-danger' onClick={this.handleDelete.bind(this)}>Delete</button>
         </td>
       </tr>
     )
@@ -71,8 +71,8 @@ export default class Record extends React.Component {
             defaultValue={this.props.record.endTime} ref='endTime' />
         </td>
         <td>
-          <a className='btn btn-default' onClick={this.handleEdit.bind(this)}>Update</a>
-          <a className='btn btn-danger' onClick={this.handleToggle.bind(this)}>Cancel</a>
+          <button className='btn btn-outline-primary' onClick={this.handleEdit.bind(this)}>Update</button>
+          <button className='btn btn-danger' onClick={this.handleToggle.bind(this)}>Cancel</button>
         </td>
       </tr>
     )
