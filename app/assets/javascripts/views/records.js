@@ -1,4 +1,5 @@
 'expose window.Records'
+import CCO from 'change-case-object';
 
 import AmountBox from '../components/amount_box';
 import RecordForm from '../components/record_form';
@@ -42,22 +43,17 @@ export default class Records extends React.Component {
   balance() {
     return this.debits() + this.credits()
   }
+
   render() {
     return (
       <div className='records'>
         <h2 className='title'>Records</h2>
-        <div className='row'>
-          <AmountBox type='success' amount={this.credits()} text='Credit' />
-          <AmountBox type='danger' amount={this.debits()} text='Debit' />
-          <AmountBox type='info' amount={this.balance()} text='Balance' />
-        </div>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
         <table className='table table-bordered'>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Title</th>
-              <th>Amount</th>
+              <th>StartTime</th>
+              <th>EndTime</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -65,7 +61,7 @@ export default class Records extends React.Component {
             {this.state.records.map((record) =>
               <Record
                 key={record.id}
-                record={record}
+                record={CCO.camel(record)} // TODO: camelize on backend
                 handleDeleteRecord={this.deleteRecord.bind(this)}
                 handleEditRecord={this.updateRecord.bind(this)} />
             )}

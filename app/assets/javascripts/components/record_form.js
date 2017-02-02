@@ -1,11 +1,12 @@
+import CCO from 'change-case-object';
+
 export default class RecordForm extends React.Component {
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      title: '',
-      date: '',
-      amount: ''
+      startTime: '',
+      endTime: ''
     };
   }
 
@@ -16,14 +17,14 @@ export default class RecordForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    $.post('', { record: this.state }, (data) => {
+    $.post('', { record: CCO.snake(this.state) }, (data) => {
       this.props.handleNewRecord(data)
       this.setState(this.state)
     }, 'JSON');
   }
 
   valid() {
-    return this.state.title && this.state.date && this.state.amount;
+    return !!this.state.startTime;
   }
 
   render() {
@@ -33,27 +34,18 @@ export default class RecordForm extends React.Component {
           <input
             type='text'
             className='form-control'
-            placeholder='Date'
-            name='date'
-            value={this.state.date}
+            placeholder='Start time'
+            name='startTime'
+            value={this.state.startTime}
             onChange={this.handleChange.bind(this)} />
         </div>
         <div className='form-group'>
           <input
             type='text'
             className='form-control'
-            placeholder='Title'
-            name='title'
-            value={this.state.title}
-            onChange={this.handleChange.bind(this)} />
-        </div>
-        <div className='form-group'>
-          <input
-            type='number'
-            className='form-control'
-            placeholder='Amount'
-            name='amount'
-            value={this.state.amount}
+            placeholder='End time'
+            name='endTime'
+            value={this.state.endTime}
             onChange={this.handleChange.bind(this)} />
         </div>
         <button type='submit' className='btn btn-primary' disabled={!this.valid()}>

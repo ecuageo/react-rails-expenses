@@ -29,9 +29,8 @@ export default class Record extends React.Component {
   handleEdit(e) {
     e.preventDefault();
     let data = {
-      title: ReactDOM.findDOMNode(this.refs.title).value,
-      date: ReactDOM.findDOMNode(this.refs.date).value,
-      amount: ReactDOM.findDOMNode(this.refs.amount).value
+      startTime: ReactDOM.findDOMNode(this.refs.startTime).value,
+      endTime: ReactDOM.findDOMNode(this.refs.endTime).value,
     };
     $.ajax({
       method: 'PUT',
@@ -48,9 +47,8 @@ export default class Record extends React.Component {
   recordRow() {
     return (
       <tr>
-        <td>{this.props.record.date}</td>
-        <td>{this.props.record.title}</td>
-        <td>{amountFormat(this.props.record.amount)}</td>
+        <td>{this.props.record.startTime}</td>
+        <td>{this.props.record.endTime}</td>
         <td>
           <a className='btn btn-default' onClick={this.handleToggle.bind(this)}>Edit</a>
           <a className='btn btn-danger' onClick={this.handleDelete.bind(this)}>Delete</a>
@@ -65,17 +63,12 @@ export default class Record extends React.Component {
         <td>
           <input
             className='form-control' type='text'
-            defaultValue={this.props.record.date} ref='date' />
+            defaultValue={this.props.record.startTime} ref='startTime' />
         </td>
         <td>
           <input
             className='form-control' type='text'
-            defaultValue={this.props.record.title} ref='title' />
-        </td>
-        <td>
-          <input
-            className='form-control' type='number'
-            defaultValue={this.props.record.amount} ref='amount' />
+            defaultValue={this.props.record.endTime} ref='endTime' />
         </td>
         <td>
           <a className='btn btn-default' onClick={this.handleEdit.bind(this)}>Update</a>
