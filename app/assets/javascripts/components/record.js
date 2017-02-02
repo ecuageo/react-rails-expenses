@@ -1,4 +1,6 @@
-class Record extends React.Component {
+import CCO from 'change-case-object';
+
+export default class Record extends React.Component {
 
   constructor(props, context) {
     super(props, context);
@@ -26,14 +28,13 @@ class Record extends React.Component {
 
   handleEdit(e) {
     e.preventDefault();
-    data = {
-      title: ReactDOM.findDOMNode(this.refs.title).value,
-      date: ReactDOM.findDOMNode(this.refs.date).value,
-      amount: ReactDOM.findDOMNode(this.refs.amount).value
-    };
+    let data = CCO.snake({
+      startTime: ReactDOM.findDOMNode(this.refs.startTime).value,
+      endTime: ReactDOM.findDOMNode(this.refs.endTime).value,
+    });
     $.ajax({
       method: 'PUT',
-      url: "/records/#{ this.props.record.id }",
+      url: `/records/${ this.props.record.id }`,
       dataType: 'JSON',
       data: { record: data },
       success: (data) => {
@@ -46,37 +47,32 @@ class Record extends React.Component {
   recordRow() {
     return (
       <tr>
-        <td>{this.props.record.date}</td>
-        <td>{this.props.record.title}</td>
-        <td>{amountFormat(this.props.record.amount)}</td>
+        <td>{this.props.record.startTime}</td>
+        <td>{this.props.record.endTime}</td>
         <td>
-          <a className='btn btn-default' onClick={this.handleToggle}>Edit</a>
-          <a className='btn btn-danger' onClick={this.handleDelete}>Delete</a>
+          <button className='btn btn-outline-primary' onClick={this.handleToggle.bind(this)}>Edit</button>
+          <button className='btn btn-danger' onClick={this.handleDelete.bind(this)}>Delete</button>
         </td>
       </tr>
     )
   }
+
   recordForm() {
     return (
       <tr>
         <td>
           <input
             className='form-control' type='text'
-            defaultValue={this.props.record.date} ref='date' />
+            defaultValue={this.props.record.startTime} ref='startTime' />
         </td>
         <td>
           <input
             className='form-control' type='text'
-            defaultValue={this.props.record.title} ref='title' />
+            defaultValue={this.props.record.endTime} ref='endTime' />
         </td>
         <td>
-          <input
-            className='form-control' type='number'
-            defaultValue={this.props.record.amount} ref='amount' />
-        </td>
-        <td>
-          <a className='btn btn-default' onClick={this.handleEdit}>Update</a>
-          <a className='btn btn-danger' onClick={this.handleToggle}>Cancel</a>
+          <button className='btn btn-outline-primary' onClick={this.handleEdit.bind(this)}>Update</button>
+          <button className='btn btn-danger' onClick={this.handleToggle.bind(this)}>Cancel</button>
         </td>
       </tr>
     )

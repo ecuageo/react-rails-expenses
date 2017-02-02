@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require react
 //= require react_ujs
-//= require components
-//= require_tree .
+//= require_tree ./configs
+//= require_tree ./views

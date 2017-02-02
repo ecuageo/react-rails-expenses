@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Record.destroy_all
+
+50.times do
+  start_time = (Date.today + rand(0..30)).to_time + rand(0..12) * 60 * 60
+  end_time = start_time + rand(0..12) * 60 * 60
+  Record.create start_time: start_time, end_time: end_time
+end
