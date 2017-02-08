@@ -15,7 +15,14 @@ module.exports = {
 
   output: {
     filename: '[name].js',
-    path: path.resolve('..', 'public', 'packs')
+    path: path.resolve('..', 'public', 'packs'),
+    // Make components available to react_ujs
+    library: 'App'
+  },
+
+  // Use react-rails' instance of react
+  externals: {
+    react: 'React'
   },
 
   module: {

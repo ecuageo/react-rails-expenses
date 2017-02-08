@@ -20,5 +20,6 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore javascript dependencies
+# Ignore webpack dependencies and builds
 /vendor/node_modules/
+/public/packs/

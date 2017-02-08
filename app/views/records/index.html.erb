@@ -1,2 +1,1 @@
-<%= content_tag :div, nil, id: 'records-data', data: { records: @records } %>
-<%= javascript_pack_tag 'records' %>
+<%= react_component 'App.Records', { data: @records } %>
