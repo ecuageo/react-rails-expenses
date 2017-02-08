@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default class AmountBox extends React.Component {
   render() {
     return (

@@ -1,4 +1,4 @@
-'expose window.Records'
+import React from 'react';
 import CCO from 'change-case-object';
 import { clone, findIndex, remove } from 'lodash';
 

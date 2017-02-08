@@ -21,4 +21,4 @@
 .byebug_history
 
 # Ignore javascript dependencies
-/node_modules/
+/vendor/node_modules/

@@ -13,6 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require react_ujs
-//= require_tree ./configs
-//= require_tree ./views
+// require react_ujs

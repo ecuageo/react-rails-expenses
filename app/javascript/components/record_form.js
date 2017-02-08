@@ -1,5 +1,5 @@
+import React from 'react';
 import CCO from 'change-case-object';
-import DatePicker from 'react-datepicker';
 
 export default class RecordForm extends React.Component {
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import CCO from 'change-case-object';
 
 export default class Record extends React.Component {
