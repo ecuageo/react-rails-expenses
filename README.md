@@ -4,6 +4,14 @@ A primer in `ReactJS` following [this tutorial](https://www.airpair.com/reactjs/
 
 I used this app to experiment on how to use `ReactJS` and `RoR`, I feel it is quite close to a nice solution.
 
+## Running the app locally
+
+- Install dependencies: `bundle && yarn`
+- Initialize the DB: `rails db:create && rails db:migrate && rails db:seed`
+- Run the front-end build: `bin/webpack-watcher`
+- Run the server: `rails server`
+- Visit `localhost:3000`
+
 ## Initial objectives
 
 My objectives were the following:
