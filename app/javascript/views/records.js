@@ -27,7 +27,7 @@ export default class Records extends React.Component {
 
   updateRecord(record, data) {
     let records = clone(this.state.records);
-    let index = findIndex(this.state.records, el => el.id === record.id);
+    let index = findIndex(records, el => el.id === record.id);
     records.splice(index, 1, data);
     this.setState({ records });
   }
@@ -50,21 +50,21 @@ export default class Records extends React.Component {
     return (
       <div className="container mt-5">
         <div className="container-fluid">
-          <h3>Time records</h3>
+          <h3>Expenses</h3>
         </div>
         <div className="container-fluid mt-1 mb-1">
           <div className="row" style={{ height: 150 }}>
-            <div className="col p-0"><AmountBox type="danger" title="Total hours" text="100" /></div>
-            <div className="col pl-1 pr-1"><AmountBox type="warning" title="Total days" text="55" /></div>
-            <div className="col p-0"><AmountBox type="success" title="Total days" text="55" /></div>
+            <div className="col p-0"><AmountBox type="success" title="Credits" amount={this.credits()} /></div>
+            <div className="col pl-1 pr-1"><AmountBox type="danger" title="Debits" amount={this.debits()} /></div>
+            <div className="col p-0"><AmountBox type="warning" title="Balance" amount={this.balance()} /></div>
           </div>
         </div>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
         <table className='table table-bordered'>
           <thead>
             <tr>
-              <th>StartTime</th>
-              <th>EndTime</th>
+              <th>Amount</th>
+              <th>Description</th>
               <th>Actions</th>
             </tr>
           </thead>
