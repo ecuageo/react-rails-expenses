@@ -1,3 +1,4 @@
+import React from 'react';
 import CCO from 'change-case-object';
 
 export default class Record extends React.Component {
@@ -29,8 +30,8 @@ export default class Record extends React.Component {
   handleEdit(e) {
     e.preventDefault();
     let data = CCO.snake({
-      startTime: ReactDOM.findDOMNode(this.refs.startTime).value,
-      endTime: ReactDOM.findDOMNode(this.refs.endTime).value,
+      amount: ReactDOM.findDOMNode(this.refs.amount).value,
+      description: ReactDOM.findDOMNode(this.refs.description).value,
     });
     $.ajax({
       method: 'PUT',
@@ -47,8 +48,8 @@ export default class Record extends React.Component {
   recordRow() {
     return (
       <tr>
-        <td>{this.props.record.startTime}</td>
-        <td>{this.props.record.endTime}</td>
+        <td>{this.props.record.amount}</td>
+        <td>{this.props.record.description}</td>
         <td>
           <button className='btn btn-outline-primary' onClick={this.handleToggle.bind(this)}>Edit</button>
           <button className='btn btn-danger' onClick={this.handleDelete.bind(this)}>Delete</button>
@@ -63,12 +64,12 @@ export default class Record extends React.Component {
         <td>
           <input
             className='form-control' type='text'
-            defaultValue={this.props.record.startTime} ref='startTime' />
+            defaultValue={this.props.record.amount} ref='amount' />
         </td>
         <td>
           <input
             className='form-control' type='text'
-            defaultValue={this.props.record.endTime} ref='endTime' />
+            defaultValue={this.props.record.description} ref='description' />
         </td>
         <td>
           <button className='btn btn-outline-primary' onClick={this.handleEdit.bind(this)}>Update</button>

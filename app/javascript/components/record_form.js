@@ -1,13 +1,13 @@
+import React from 'react';
 import CCO from 'change-case-object';
-import DatePicker from 'react-datepicker';
 
 export default class RecordForm extends React.Component {
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      startTime: '',
-      endTime: ''
+      amount: '',
+      description: ''
     };
   }
 
@@ -25,7 +25,7 @@ export default class RecordForm extends React.Component {
   }
 
   valid() {
-    return !!this.state.startTime;
+    return !!this.state.amount;
   }
 
   render() {
@@ -33,18 +33,18 @@ export default class RecordForm extends React.Component {
       <div className="container-fluid bg-faded">
         <form className='form-inline pt-3 pb-3' onSubmit={this.handleSubmit.bind(this)}>
           <input
-            type='datetime-local'
+            type='text'
             className='form-control mb-2 mr-sm-2 mb-sm-0'
-            placeholder='Start time'
-            name='startTime'
-            value={this.state.startTime}
+            placeholder='Amount'
+            name='amount'
+            value={this.state.amount}
             onChange={this.handleChange.bind(this)} />
           <input
-            type='datetime-local'
+            type='text'
             className='form-control mb-2 mr-sm-2 mb-sm-0'
-            placeholder='End time'
-            name='endTime'
-            value={this.state.endTime}
+            placeholder='Description'
+            name='description'
+            value={this.state.description}
             onChange={this.handleChange.bind(this)} />
           <button type='submit' className='btn btn-primary' disabled={!this.valid()}>
             Create record

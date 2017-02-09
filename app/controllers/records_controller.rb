@@ -31,6 +31,6 @@ class RecordsController < ApplicationController
   private
 
     def record_params
-      params.require(:record).permit(:start_time, :end_time)
+      params.require(:record).permit(:amount, :description)
     end
 end

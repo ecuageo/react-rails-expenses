@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 20170116215522) do
 
   create_table "records", force: :cascade do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.float    "amount"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

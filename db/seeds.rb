@@ -8,8 +8,38 @@
 
 Record.destroy_all
 
-50.times do
-  start_time = (Date.today + rand(0..30)).to_time + rand(0..12) * 60 * 60
-  end_time = start_time + rand(0..12) * 60 * 60
-  Record.create start_time: start_time, end_time: end_time
+expense_descriptions = [
+  'groceries',
+  'party',
+  'bar',
+  'concert tickets',
+  'football game',
+  'pizza',
+  'buffalo wings'
+].map do |desc|
+  { type: :expense, description: desc}
+end
+
+income_descriptions = [
+  'freelance programming',
+  'freelance programming',
+  'freelance design',
+  'freelance design',
+  'walk dog',
+  'walk dog',
+  'deejaying',
+  'deejaying',
+  'sold old old furniture',
+  'sold old old furniture'
+].map do |desc|
+  { type: :income, description: desc}
+end
+
+descriptions = (expense_descriptions + income_descriptions).shuffle
+
+30.times do
+  description = descriptions.sample
+  amount = (10..100).step(10).to_a.sample
+  amount = description[:type] == :expense ? -amount : amount
+  Record.create description: description[:description], amount: amount
 end
